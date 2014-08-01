@@ -1,18 +1,11 @@
 #SingleInstance, force
-#include Stats.ahk
 #include UDF.ahk
-
-keyForEntry(text, entry)
-{
-	RegExMatch(text, "i)" .  entry . "\:\[(.*?)\]", match)
-	return match1
-}
-
+#include Stats.ahk
 
 #IfWinActive, GTA:SA:MP
 
 1::
-if(ReadStats(text))
+if(ReadStats_s(text))
 {
 	level := keyForEntry(text, "Level")
 	kills := keyForEntry(text, "Kills\(DM\)")
@@ -20,11 +13,14 @@ if(ReadStats(text))
 	payday := keyForEntry(text, "Minuten seit Payday")
 	bank := keyForEntry(text, "Bank")
 
-	AddChatMessage("{ffffff} Mein Level: " . level . ", Kills: " . kills . ", Tode: " . death . ", Zeit seit Payday: " . payday . ", Bankvermögen: " . bank)
-	SendChat("Meine Stats: mein Level: " . level . ", Kills: " . kills . ", Tode: " . death . ", Zeit seit Payday: " . payday . ", Bankvermögen: " . bank)
+	AddChatMessage("{ffffff} Mein Level: " . level . ", Kills: " . kills . ", Tode: " . death . ", Zeit seit Payday: " . payday . ", Bankverm�gen: " . bank)
 }
 Else
 {
-	AddChatMessage("{ffffff} Stats konnten nicht gelesen werden")
+	AddChatMessage("{ffffff} Stats konnten nicht gelesen werden, da der Dialog nicht geoeffnet werden konnte, bzw. der Spam-Schutz aktiv ist!")
 }
+return
+
+2::
+ExitApp
 return
