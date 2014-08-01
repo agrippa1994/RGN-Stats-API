@@ -39,6 +39,9 @@ ReadStats_s(byref string)
 	if(g_whenIsAllowedToSend > A_TickCount)
 	{
 		string := g_szText
+		if(strLen(g_szText) == 0)
+			return false
+		
 		return true
 	}
 	
