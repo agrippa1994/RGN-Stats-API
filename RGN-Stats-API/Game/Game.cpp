@@ -25,6 +25,7 @@ typedef void (__thiscall *showDialogPtr)(void *, int, int, char *, char *, char 
 showDialogPtr g_origShowDialog = NULL;
 
 bool g_bShouldReadStats = false;
+DWORD g_dwObject = 0;
 
 std::mutex g_synchronizationMutex;
 std::condition_variable g_synchronizationCondition;
@@ -98,6 +99,7 @@ bool sendCommand(const char *text)
 
 void __fastcall hkShowDialog(void * _ecx, void *_edx, int id, int style, char *caption, char *text, char *button, void *unk, int unk2)
 {
+	g_dwObject = (DWORD)_ecx;
 	if (g_bShouldReadStats && id == 500) // DialogID von den Stats ist 500
 	{
 		try
@@ -123,6 +125,10 @@ std::string getStats()
 {
 	if (g_origShowDialog == 0)
 		return{};
+
+	if (g_dwObject)
+		if (*(bool *) (g_dwObject + 0x28)) // Ist ein Dialog offen?
+			return{};
 
 	g_bShouldReadStats = true;
 	if (!sendCommand("/stats"))
