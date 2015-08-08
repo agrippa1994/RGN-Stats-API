@@ -41,8 +41,7 @@ void initGame()
 	while ((hHandle = GetModuleHandle("samp.dll")) == NULL)
 		Sleep(200);
 
-	DWORD dwFunction = findPattern((DWORD) hHandle, GetModuleLength(hHandle), (BYTE *)"\x83\xEC\x08\x56\x57\x8B\x7C\x24\x14\x85\xFF\x8B\xF1\x7D\x18", 
-		"xxxxxxxxxxxxxxx");
+	DWORD dwFunction = findPattern((DWORD) hHandle, GetModuleLength(hHandle), (BYTE *)"\x83\xEC\x10\x53\x56\x57\x8B\x7C\x24\x20", "xxxxxxxxxx");
 
 	if (dwFunction)
 		g_origShowDialog = (showDialogPtr) DetourFunction((PBYTE) dwFunction, (PBYTE) hkShowDialog);

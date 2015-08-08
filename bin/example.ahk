@@ -10,14 +10,14 @@ if(ReadStats_s(text))
 	level := keyForEntry(text, "Level")
 	kills := keyForEntry(text, "Kills\(DM\)")
 	death := keyForEntry(text, "Tode")
-	payday := keyForEntry(text, "Minuten seit Payday")
+	p1ayday := keyForEntry(text, "Minuten seit Payday")
 	bank := keyForEntry(text, "Bank")
 
-	AddChatMessage("{ffffff} Mein Level: " . level . ", Kills: " . kills . ", Tode: " . death . ", Zeit seit Payday: " . payday . ", Bankvermögen: " . bank)
+	addMessageToChatWindow("{ffffff} Mein Level: " . level . ", Kills: " . kills . ", Tode: " . death . ", Zeit seit Payday: " . payday . ", Bankvermögen: " . bank)
 }
 Else
 {
-	AddChatMessage("{ffffff} Stats konnten nicht gelesen werden, da der Dialog nicht geoeffnet werden konnte, bzw. der Spam-Schutz aktiv ist!")
+	addMessageToChatWindow("{ffffff} Stats konnten nicht gelesen werden, da der Dialog nicht geoeffnet werden konnte, bzw. der Spam-Schutz aktiv ist!")
 }
 return
 
