@@ -10,7 +10,7 @@ if(ReadStats_s(text))
 	level := keyForEntry(text, "Level")
 	kills := keyForEntry(text, "Kills\(DM\)")
 	death := keyForEntry(text, "Tode")
-	p1ayday := keyForEntry(text, "Minuten seit Payday")
+	payday := keyForEntry(text, "Minuten seit Payday")
 	bank := keyForEntry(text, "Bank")
 
 	addMessageToChatWindow("{ffffff} Mein Level: " . level . ", Kills: " . kills . ", Tode: " . death . ", Zeit seit Payday: " . payday . ", Bankvermögen: " . bank)
